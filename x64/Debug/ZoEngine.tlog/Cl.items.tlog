@@ -1,4 +1,6 @@
 C:\projects\ZoEngine\ZoEngine\Core\Application.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Application.obj
 C:\projects\ZoEngine\ZoEngine\Core\DeltaTime.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\DeltaTime.obj
 C:\projects\ZoEngine\ZoEngine\glad.c;C:\projects\ZoEngine\ZoEngine\x64\Debug\glad.obj
+C:\projects\ZoEngine\ZoEngine\Graphics\Renderer.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Renderer.obj
+C:\projects\ZoEngine\ZoEngine\Graphics\Shader.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Shader.obj
 C:\projects\ZoEngine\ZoEngine\Main.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Main.obj

@@ -9,7 +9,7 @@ int Application::Initialize()
     /* Initialize the library */
     if (!glfwInit())
         return -1;
-    const char* glsl_version = "#version 130";
+    const char* glsl_version = "#version 460";
     // GLFW Version
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
