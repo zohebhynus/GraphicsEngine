@@ -4,14 +4,18 @@
 #include <GLFW/glfw3.h>
 
 #include "Core/DeltaTime.h"
+#include "Input/MouseInput.h"
 
 // Funcion declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 
 // Global Variables
 unsigned int WindowWidth = 1280;
 unsigned int WindowHeight = 720;
+
+bool ImGuiEditMode = true;
 
 int main(void)
 {
@@ -54,6 +58,13 @@ int main(void)
     // Initialize Systems
     DeltaTime dt;
 
+    MouseInput mouseInput(WindowWidth, WindowHeight, window);
+    glfwSetWindowUserPointer(window, &mouseInput);
+    glfwSetCursorPosCallback(window, MouseInput::MousePositionCallBack);
+    glfwSetKeyCallback(window, key_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,4 +102,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     WindowWidth = width;
     WindowHeight = height;
     glViewport(0, 0, WindowWidth, WindowHeight);
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_I && action == GLFW_PRESS)
+        ImGuiEditMode = !ImGuiEditMode;
 }
