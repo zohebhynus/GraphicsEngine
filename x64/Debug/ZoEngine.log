@@ -1,6 +1,2 @@
-﻿  Renderer.cpp
-  Shader.cpp
-C:\projects\ZoEngine\ZoEngine\Graphics\Shader.cpp(201,7): warning C4101: 'length': unreferenced local variable
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   ZoEngine.vcxproj -> C:\projects\ZoEngine\ZoEngine\x64\Debug\ZoEngine.exe
