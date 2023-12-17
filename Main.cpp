@@ -13,7 +13,15 @@
 #include "Graphics/Shader.h"
 #include "Graphics/Model.h"
 #include "Graphics/LightSystem.h"
+#include "Graphics/ShadowSystem.h"
 #include "GameEngineFeatures/GameObject.h"
+
+#include <windows.h>
+extern "C"
+{
+    __declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+    __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+}
 
 // Funcion declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -82,6 +90,9 @@ int main(void)
 
     Shader* PBRLightShader = new Shader("Assets/Shaders/PBRLightVS.glsl", "Assets/Shaders/PBRLightFS.glsl");
     Shader* lightObjectShader = new Shader("Assets/Shaders/lightObjectVS.glsl", "Assets/Shaders/lightObjectFS.glsl");
+    Shader* shadowMapShader = new Shader("Assets/Shaders/shadowMapVS.glsl", "Assets/Shaders/shadowMapFS.glsl");
+    Shader* shadowCubeMapShader = new Shader("Assets/Shaders/pointShadowMapVS.glsl", "Assets/Shaders/pointShadowMapFS.glsl", "Assets/Shaders/pointShadowMapGS.glsl");
+
 
     Model cubeModel("Assets/Models/basic/cube/cube.json");
     Model sphereModel("Assets/Models/basic/sphere/sphere.json");
@@ -90,7 +101,7 @@ int main(void)
     objList.push_back(GameObject("ground", &cubeModel, PBRLightShader));
     objList.push_back(GameObject("globe", &sphereModel, PBRLightShader));
     objList.push_back(GameObject("globe1", &sphereModel, PBRLightShader));
-    objList.push_back(GameObject("glob2", &sphereModel, PBRLightShader));
+    objList.push_back(GameObject("globe2", &sphereModel, PBRLightShader));
 
     objList[0].GetTransform().SetPosition(glm::vec3(0.0f, -0.135f, 0.0f));
     objList[0].GetTransform().SetScale(glm::vec3(200.0f, 0.25f, 200.0f));
@@ -102,6 +113,8 @@ int main(void)
     objList[3].GetTransform().SetPosition(glm::vec3(0.0f, 1.0f, -3.0f));
 
     LightSystem lightSystem(PBRLightShader, lightObjectShader, &sphereModel);
+    ShadowSystem shadowSystem(shadowMapShader, shadowCubeMapShader, &lightSystem);
+
 
     DebugMenu debugMenu(objList, lightSystem, ImGuiEditMode, window);
 
@@ -113,6 +126,12 @@ int main(void)
         dt.CalculateDeltaTime();
         debugMenu.StartRender();
 
+        shadowSystem.GenerateDirLightShadowMap(objList);
+        shadowSystem.GeneratePointLightShadowCubeMap(objList);
+
+        glEnable(GL_DEPTH_TEST);
+        glViewport(0, 0, WindowWidth, WindowHeight);
+        
         // Processes Inputs
         mouseInput.Update();
         if (ImGuiEditMode)
@@ -132,8 +151,12 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        shadowSystem.SetShaderValuesInLightShader(PBRLightShader);
+
         lightSystem.DrawLightObjects(camera);
         lightSystem.SetLightData();
+
+
         for (GameObject& obj : objList)
         {
             obj.Draw(camera);
@@ -157,6 +180,9 @@ int main(void)
     
     delete PBRLightShader;
     delete lightObjectShader;
+    delete shadowMapShader;
+    delete shadowCubeMapShader;
+
 
     glfwTerminate();
     return 0;

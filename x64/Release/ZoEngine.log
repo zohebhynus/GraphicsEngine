@@ -1,0 +1,8 @@
+﻿  ShadowSystem.cpp
+     Creating library C:\projects\ZoEngine\ZoEngine\x64\Release\ZoEngine.lib and object C:\projects\ZoEngine\ZoEngine\x64\Release\ZoEngine.exp
+  Generating code
+  6 of 4779 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    45 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ZoEngine.vcxproj -> C:\projects\ZoEngine\ZoEngine\x64\Release\ZoEngine.exe

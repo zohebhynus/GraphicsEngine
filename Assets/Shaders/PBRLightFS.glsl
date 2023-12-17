@@ -198,7 +198,7 @@ vec3 PointLightCalculation(vec3 albedoValue, float metallicValue, float roughnes
         // scale light by NdotL
         float NdotL = max(dot(normalFromMap, L), 0.0);   
         
-        float shadow = 0.0f;//PointLightShadowCalculation(v_FragPos.xyz, light, lightNumber); 
+        float shadow = PointLightShadowCalculation(v_FragPos.xyz, light, lightNumber); 
 
         // add to outgoing radiance Lo
         vec3 Lo = (kD * albedoValue / PI + specular) * radiance * NdotL * (1.0f - shadow);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again

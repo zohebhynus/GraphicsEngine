@@ -90,6 +90,7 @@
     <ClCompile Include="Graphics\Model.cpp" />
     <ClCompile Include="Graphics\Renderer.cpp" />
     <ClCompile Include="Graphics\Shader.cpp" />
+    <ClCompile Include="Graphics\ShadowSystem.cpp" />
     <ClCompile Include="Graphics\stb.cpp" />
     <ClCompile Include="Input\MouseInput.cpp" />
     <ClCompile Include="Libraries\include\ImGui\backends\imgui_impl_glfw.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Graphics\Model.h" />
     <ClInclude Include="Graphics\Renderer.h" />
     <ClInclude Include="Graphics\Shader.h" />
+    <ClInclude Include="Graphics\ShadowSystem.h" />
     <ClInclude Include="Input\MouseInput.h" />
     <ClInclude Include="Libraries\include\ImGui\backends\imgui_impl_glfw.h" />
     <ClInclude Include="Libraries\include\ImGui\backends\imgui_impl_opengl3.h" />
