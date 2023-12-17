@@ -33,6 +33,18 @@
     <ClCompile Include="Input\MouseInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\stb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\DeltaTime.h">
@@ -47,5 +59,18 @@
     <ClInclude Include="Input\MouseInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\PBRLightFS.glsl" />
+    <None Include="Assets\Shaders\PBRLightVS.glsl" />
   </ItemGroup>
 </Project>

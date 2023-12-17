@@ -2,9 +2,14 @@
 
 #include<glad/glad.h>
 #include <GLFW/glfw3.h>
+#include<glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtc/type_ptr.hpp>
 
 #include "Core/DeltaTime.h"
 #include "Input/MouseInput.h"
+#include "Graphics/Camera.h"
+#include "Graphics/Shader.h"
 
 // Funcion declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -54,6 +59,7 @@ int main(void)
     // Set Viewport
     glViewport(0, 0, WindowWidth, WindowHeight);
 
+    glfwSwapBuffers(window);
 
     // Initialize Systems
     DeltaTime dt;
@@ -64,7 +70,9 @@ int main(void)
     glfwSetKeyCallback(window, key_callback);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
+    Camera camera(glm::vec3(0.0f, 2.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), &mouseInput);
 
+    Shader* PBRLightShader = new Shader("Assets/Shaders/PBRLightVS.glsl", "Assets/Shaders/PBRLightFS.glsl");
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,6 +81,19 @@ int main(void)
     while (!glfwWindowShouldClose(window))
     {
         dt.CalculateDeltaTime();
+
+        // Processes Inputs
+        mouseInput.Update();
+        if (ImGuiEditMode)
+        {
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }
+        else
+        {
+            camera.ProcessInput(window, dt.GetDeltaTime());
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        }
+
 
         // Specify color of background
         glClearColor(0.4f, 0.4f, 0.4f, 1.0f);

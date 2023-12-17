@@ -1,6 +1,10 @@
 C:\projects\ZoEngine\ZoEngine\Core\DeltaTime.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\DeltaTime.obj
 C:\projects\ZoEngine\ZoEngine\glad.c;C:\projects\ZoEngine\ZoEngine\x64\Debug\glad.obj
+C:\projects\ZoEngine\ZoEngine\Graphics\Camera.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Camera.obj
+C:\projects\ZoEngine\ZoEngine\Graphics\Mesh.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Mesh.obj
+C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Model.obj
 C:\projects\ZoEngine\ZoEngine\Graphics\Renderer.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Renderer.obj
 C:\projects\ZoEngine\ZoEngine\Graphics\Shader.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Shader.obj
+C:\projects\ZoEngine\ZoEngine\Graphics\stb.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\stb.obj
 C:\projects\ZoEngine\ZoEngine\Input\MouseInput.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\MouseInput.obj
 C:\projects\ZoEngine\ZoEngine\Main.cpp;C:\projects\ZoEngine\ZoEngine\x64\Debug\Main.obj
