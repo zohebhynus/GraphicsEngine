@@ -23,7 +23,7 @@ extern "C"
     __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
 }
 
-// Funcion declarations
+// Function declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
@@ -86,7 +86,7 @@ int main(void)
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
-    //glEnable(GL_MULTISAMPLE);
+    glEnable(GL_MULTISAMPLE);
 
     Shader* PBRLightShader = new Shader("Assets/Shaders/PBRLightVS.glsl", "Assets/Shaders/PBRLightFS.glsl");
     Shader* lightObjectShader = new Shader("Assets/Shaders/lightObjectVS.glsl", "Assets/Shaders/lightObjectFS.glsl");
@@ -104,7 +104,7 @@ int main(void)
     objList.push_back(GameObject("globe2", &sphereModel, PBRLightShader));
 
     objList[0].GetTransform().SetPosition(glm::vec3(0.0f, -0.135f, 0.0f));
-    objList[0].GetTransform().SetScale(glm::vec3(200.0f, 0.25f, 200.0f));
+    objList[0].GetTransform().SetScale(glm::vec3(50.0f, 0.25f, 50.0f));
 
     objList[1].GetTransform().SetPosition(glm::vec3(-3.0f, 1.0f, 0.0f));
 
@@ -146,7 +146,8 @@ int main(void)
 
 
         // Specify color of background
-        glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
+        glm::vec4 backgroundColor = lightSystem.GetEnvironmentColor();
+        glClearColor(backgroundColor.x, backgroundColor.y, backgroundColor.z, backgroundColor.z);
 
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -110,6 +110,8 @@ public:
 	void DrawLightObjects(Camera& camera);
 	int NUMBER_OF_LIGHTS = 10;
 
+	glm::vec4 GetEnvironmentColor();
+
 private:
 	GlobalAmbientLight m_AmbientLight;
 	DirectionalLight m_DirectionalLight;

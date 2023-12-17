@@ -19,8 +19,17 @@ LightSystem::LightSystem(Shader* lightShader, Shader* lightObjectShader, Model* 
 	m_DirectionalLight.SpecularIntensity = 1.0f;
 
 
+	PointLight bigLight;
+	bigLight.Name = "Big Light";
+	bigLight.LightColor = glm::vec3(1.0f, 0.0f, 0.0f);
+	bigLight.Position = glm::vec3(0.0f, 4.0f, 0.0f);
+	bigLight.radius = 10.0f;
+	bigLight.edgeIntensity = 9.0f;
+
+	m_PointLights.push_back(bigLight);
+
 	std::string name = "Light";
-	for (int i = 0; i < NUMBER_OF_LIGHTS; i++)
+	for (int i = 0; i < NUMBER_OF_LIGHTS - 1; i++)
 	{
 		PointLight light;
 		light.Name = name + std::to_string(i);
@@ -31,6 +40,9 @@ LightSystem::LightSystem(Shader* lightShader, Shader* lightObjectShader, Model* 
 
 		m_PointLights.push_back(light);
 	}
+
+
+
 
 
 
@@ -175,7 +187,11 @@ void LightSystem::DrawLightObjects(Camera& camera)
 		//directionalLight
 		glm::mat4 model(1.0f);
 		model = glm::translate(model, -m_DirectionalLight.Direction);
-		model = glm::scale(model, glm::vec3(5.0f));
+		if (m_DirectionalLight.IsEnabled)
+			model = glm::scale(model, glm::vec3(5.0f));
+		else
+			model = glm::scale(model, glm::vec3(2.0f));
+
 		m_LightObjectShader->SetUniformMatrix4fv("model", model);
 		m_LightObjectShader->SetUniform4f("lightColor", m_DirectionalLight.LightColor.x, m_DirectionalLight.LightColor.y, m_DirectionalLight.LightColor.z, 1.0);
 		m_LightObjectModel->Draw(m_LightObjectShader);
@@ -186,4 +202,13 @@ void LightSystem::DrawLightObjects(Camera& camera)
 	{
 		std::cout << " Shader is nullptr for LightObjectModel" << std::endl;
 	}
+}
+
+glm::vec4 LightSystem::GetEnvironmentColor()
+{
+	if (m_DirectionalLight.IsEnabled)
+		return glm::vec4(0.369f, 0.808f, 1.0f, 1.0f);
+	else
+		return glm::vec4(0.18f, 0.078f, 0.271f, 1.0f);
+
 }
