@@ -81,24 +81,52 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\DeltaTime.cpp" />
+    <ClCompile Include="GameEngineFeatures\GameObject.cpp" />
+    <ClCompile Include="GameEngineFeatures\Transform.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Graphics\Camera.cpp" />
+    <ClCompile Include="Graphics\LightSystem.cpp" />
     <ClCompile Include="Graphics\Mesh.cpp" />
     <ClCompile Include="Graphics\Model.cpp" />
     <ClCompile Include="Graphics\Renderer.cpp" />
     <ClCompile Include="Graphics\Shader.cpp" />
     <ClCompile Include="Graphics\stb.cpp" />
     <ClCompile Include="Input\MouseInput.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\imgui-knobs.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\imgui.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="Libraries\include\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Utilities\DebugMenu.cpp" />
+    <ClCompile Include="Utilities\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\DeltaTime.h" />
+    <ClInclude Include="GameEngineFeatures\GameObject.h" />
+    <ClInclude Include="GameEngineFeatures\Transform.h" />
     <ClInclude Include="Graphics\Camera.h" />
+    <ClInclude Include="Graphics\LightSystem.h" />
     <ClInclude Include="Graphics\Mesh.h" />
     <ClInclude Include="Graphics\Model.h" />
     <ClInclude Include="Graphics\Renderer.h" />
     <ClInclude Include="Graphics\Shader.h" />
     <ClInclude Include="Input\MouseInput.h" />
+    <ClInclude Include="Libraries\include\ImGui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="Libraries\include\ImGui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="Libraries\include\ImGui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Libraries\include\ImGui\imconfig.h" />
+    <ClInclude Include="Libraries\include\ImGui\imgui-knobs.h" />
+    <ClInclude Include="Libraries\include\ImGui\imgui.h" />
+    <ClInclude Include="Libraries\include\ImGui\imgui_internal.h" />
+    <ClInclude Include="Libraries\include\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="Libraries\include\ImGui\imstb_textedit.h" />
+    <ClInclude Include="Libraries\include\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Utilities\DebugMenu.h" />
+    <ClInclude Include="Utilities\Random.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\PBRLightFS.glsl" />

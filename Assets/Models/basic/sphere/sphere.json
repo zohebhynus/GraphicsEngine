@@ -1,0 +1,16 @@
+{
+    "fileType":"Model",
+
+    "filePath":"sphere.obj",
+
+    "haveMaterial":"true",
+
+    "material":{
+        "albedo":"weird_albedo.jpg",
+        "normal":"weird_normal.png",
+        "metallic":"weird_metallic.jpg",
+        "roughness":"weird_roughness.jpg",
+        "ao":"weird_ao.jpg"
+    }
+    
+}

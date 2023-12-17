@@ -7,9 +7,13 @@
 #include<glm/gtc/type_ptr.hpp>
 
 #include "Core/DeltaTime.h"
+#include "Utilities/DebugMenu.h"
 #include "Input/MouseInput.h"
 #include "Graphics/Camera.h"
 #include "Graphics/Shader.h"
+#include "Graphics/Model.h"
+#include "Graphics/LightSystem.h"
+#include "GameEngineFeatures/GameObject.h"
 
 // Funcion declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -72,8 +76,34 @@ int main(void)
 
     Camera camera(glm::vec3(0.0f, 2.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), &mouseInput);
 
-    Shader* PBRLightShader = new Shader("Assets/Shaders/PBRLightVS.glsl", "Assets/Shaders/PBRLightFS.glsl");
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    //glEnable(GL_MULTISAMPLE);
 
+    Shader* PBRLightShader = new Shader("Assets/Shaders/PBRLightVS.glsl", "Assets/Shaders/PBRLightFS.glsl");
+    Shader* lightObjectShader = new Shader("Assets/Shaders/lightObjectVS.glsl", "Assets/Shaders/lightObjectFS.glsl");
+
+    Model cubeModel("Assets/Models/basic/cube/cube.json");
+    Model sphereModel("Assets/Models/basic/sphere/sphere.json");
+
+    std::vector<GameObject> objList;
+    objList.push_back(GameObject("ground", &cubeModel, PBRLightShader));
+    objList.push_back(GameObject("globe", &sphereModel, PBRLightShader));
+    objList.push_back(GameObject("globe1", &sphereModel, PBRLightShader));
+    objList.push_back(GameObject("glob2", &sphereModel, PBRLightShader));
+
+    objList[0].GetTransform().SetPosition(glm::vec3(0.0f, -0.135f, 0.0f));
+    objList[0].GetTransform().SetScale(glm::vec3(200.0f, 0.25f, 200.0f));
+
+    objList[1].GetTransform().SetPosition(glm::vec3(-3.0f, 1.0f, 0.0f));
+
+    objList[2].GetTransform().SetPosition(glm::vec3(3.0f, 1.0f, 0.0f));
+
+    objList[3].GetTransform().SetPosition(glm::vec3(0.0f, 1.0f, -3.0f));
+
+    LightSystem lightSystem(PBRLightShader, lightObjectShader, &sphereModel);
+
+    DebugMenu debugMenu(objList, lightSystem, ImGuiEditMode, window);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////// Game Loop                                                                                      
@@ -81,6 +111,7 @@ int main(void)
     while (!glfwWindowShouldClose(window))
     {
         dt.CalculateDeltaTime();
+        debugMenu.StartRender();
 
         // Processes Inputs
         mouseInput.Update();
@@ -99,7 +130,15 @@ int main(void)
         glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
 
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        lightSystem.DrawLightObjects(camera);
+        lightSystem.SetLightData();
+        for (GameObject& obj : objList)
+        {
+            obj.Draw(camera);
+        }
+        debugMenu.EndRender();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
@@ -111,6 +150,14 @@ int main(void)
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////// Clean Up                                                                                   
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    debugMenu.Shutdown();
+
+    // Delete window
+    glfwDestroyWindow(window);
+    
+    delete PBRLightShader;
+    delete lightObjectShader;
+
     glfwTerminate();
     return 0;
 }

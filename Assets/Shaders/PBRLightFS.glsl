@@ -172,7 +172,7 @@ vec3 PointLightCalculation(vec3 albedoValue, float metallicValue, float roughnes
         float dist = length(light.position.xyz - v_FragPos);
         //float attenuation = 1.0 / (1.0 + (light.radius * dist) + (light.edgeIntensity * dist * dist));
         //float attenuation = attenuate(L, light.radius);
-        float attenuation = 1.0f - smoothstep(light.radiusIntensity.z, light.radiusIntensity.w, dist);
+        float attenuation = 1.0f - smoothstep(light.radiusIntensity.w, light.radiusIntensity.z, dist);
         vec3 radiance = light.lightColor.xyz * attenuation;
 
         // Cook-Torrance BRDF

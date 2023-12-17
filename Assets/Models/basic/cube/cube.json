@@ -1,0 +1,15 @@
+{
+    "fileType":"Model",
+
+    "filePath":"cube.obj",
+
+    "haveMaterial":"true",
+
+    "material":{
+        "albedo":"wood_albedo.png",
+        "normal":"wood_normal.png",
+        "metallic":"none",
+        "roughness":"wood_roughness.png",
+        "ao":"wood_ao.png"
+    }
+}

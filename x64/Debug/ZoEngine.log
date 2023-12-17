@@ -1,12 +1,2 @@
-﻿  Model.cpp
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(28,20): warning C4018: '<': signed/unsigned mismatch
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(34,20): warning C4018: '<': signed/unsigned mismatch
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(46,20): warning C4018: '<': signed/unsigned mismatch
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(68,20): warning C4018: '<': signed/unsigned mismatch
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(71,21): warning C4018: '<': signed/unsigned mismatch
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(127,20): warning C4018: '<': signed/unsigned mismatch
-C:\projects\ZoEngine\ZoEngine\Graphics\Model.cpp(136,58): warning C4018: '<': signed/unsigned mismatch
-  stb.cpp
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿  Main.cpp
   ZoEngine.vcxproj -> C:\projects\ZoEngine\ZoEngine\x64\Debug\ZoEngine.exe
