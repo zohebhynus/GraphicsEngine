@@ -31,23 +31,28 @@ Worked on this project to implement a couple of Graphic Techniques using OpenGL.
 
 ## Images
 
- ![Point light and point light shadows](Assets\EngineImages\Engine_point_light_shadows.png)**Point Light Shadows**
+ ![Point light and point light shadows](Assets\EngineImages\Engine_point_light_shadows.png)
+ **Point Light Shadows**
 
 ---
 
- ![Directional light and Directional light shadow](Assets/EngineImages/Engine_directional_light_shadow.png)**Directional Light Shadow**
+ ![Directional light and Directional light shadow](Assets/EngineImages/Engine_directional_light_shadow.png)
+ **Directional Light Shadow**
 
 ---
 
- ![Model object debug menu controls](Assets/EngineImages/Engine_debug_menu_object_control.png)**Model Object Transformation Controls**
+ ![Model object debug menu controls](Assets/EngineImages/Engine_debug_menu_object_control.png)
+ **Model Object Transformation Controls**
 
 ---
 
- ![Point light properties controls](Assets/EngineImages/Engine_point_light_control.png)**Point Light Properties Controls**
+ ![Point light properties controls](Assets/EngineImages/Engine_point_light_control.png)
+ **Point Light Properties Controls**
 
 ---
 
- ![Directional light properties controls](Assets/EngineImages/Engine_directional_light_control.png)**Directional Light Properties Controls**
+ ![Directional light properties controls](Assets/EngineImages/Engine_directional_light_control.png)
+ **Directional Light Properties Controls**
 
 ## Planned Work
  * Premake/Cmake solution for building project files
