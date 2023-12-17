@@ -31,7 +31,7 @@ Worked on this project to implement a couple of Graphic Techniques using OpenGL.
 
 ## Images
 
- ![Point light and point light shadows](Assets\EngineImages\Engine_point_light_shadows.png)
+ ![Point light and point light shadows](Assets/EngineImages/Engine_point_light_shadows.png)
  **Point Light Shadows**
 
 ---
